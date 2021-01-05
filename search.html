@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Searchie! Web Search</title>            
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <center>
+        <img src="branding.png" alt="branding" id="logo" style="padding-top:100px;height: 150;"><br/>
+        <span><input type="text" id="search" placeholder="Search here"><button id="go">GO</button></span>
+        <br/><label id='text'></label>
+        </center>
+
+        <script>
+            const search = document.getElementById('search')
+            const go = document.getElementById('go')
+            const temp = 'You are using %1 to search with! <a href="options.html">[Change]</a>'
+            var name, url = localStorage['searchie.url']
+
+            if (!url){
+                url = 'http://www.google.com/search?q='
+                name = 'Google'
+            } else {
+                name = localStorage['searchie.url.name']
+            }
+
+            document.getElementById('text').innerHTML = temp.replace('%1', name)
+
+            go.addEventListener('click', () => {
+                if (search.value != ""){
+                window.open(localStorage['searchie.url']+search.value.replace(' ','+'))
+                }
+            })
+        </script>
+
+        <style>
+            input {
+                width: 80%;
+                max-width: 350px;
+                height: 35px;
+                background-color: lightgray;
+                color: white;
+            }
+            button {
+                height: 40px;
+                width: 50px;
+                background-color: lightgray;
+            }
+            label {
+                font-family: Georgia, Times;
+                color: white;
+            }
+            body {background-color: gray;}
+        </style>
+    </body>
+</html>

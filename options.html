@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <img src="branding.png" alt="branding" id="logo" style="padding-top:50px;height: 100;"><br/>
+    <label>Search Tool: </label><select id='tool'>
+        <option value="0">Google (normal)</option>
+        <option value="1">Bing</option>
+        <option value="2">Yahoo!</option>
+        <option value="3">DuckDuckGo</option>
+    </select><br/><br/>
+    <button id='save'>Save</button><a href="search.html"><button id='exit'>Exit</button></a>
+    </center>
+
+    <script>
+        const tool = document.getElementById('tool')
+        const save = document.getElementById('save')
+
+        const tags = [['Google','http://www.google.com/search?q='],['Bing','http://www.bing.com/search?q='],['Yahoo!','http://www.yahoo.com/search?q='],['DuckDuckGo','http://www.duckduckgo.com/search?q=']]
+
+        save.addEventListener('click', () => {
+            localStorage['searchie.url'] = tags[tool.value][1]
+            localStorage['searchie.url.name'] = tags[tool.value][0]
+            window.location.assign('search.html')
+        })
+    </script>
+
+    <style>
+        label, select {
+            font-size: medium;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        button {width: 100px;}
+        body {background-color: gray;}
+    </style>
+</body>
+</html>
